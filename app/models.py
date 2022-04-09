@@ -2,7 +2,7 @@ from wtforms import StringField, SubmitField, PasswordField, RadioField
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
-
+from werkzeug.security import check_password_hash, generate_password_hash
 
 class PlatformUser:
     def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, is_active, last_logged_in):
@@ -17,6 +17,13 @@ class PlatformUser:
         self.is_active = is_active
         self.role = role
         self.last_logged_in = last_logged_in
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 class PlatformUser:
     def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, is_active, last_logged_in):

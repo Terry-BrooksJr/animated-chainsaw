@@ -11,10 +11,13 @@ python-dotenv = "*"
 flask-restless = "*"
 sqlalchemy = "*"
 flask-pwa = "*"
-markupsafe = "*"
+markupsafe = "==2.0.1"
 flask = "*"
 flask-login = "*"
 jinja2 = "*"
+flask-security = "*"
+copier = "*"
+pipx = "*"
 
 [dev-packages]
 

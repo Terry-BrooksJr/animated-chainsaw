@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, url_for, redirect
 from flask import current_app as app
 from .forms_enrollment import *
-from models import PlatformUser
+from app.models import PlatformUser
 
 
 # Blueprint Configuration
