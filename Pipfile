@@ -18,6 +18,7 @@ jinja2 = "*"
 flask-security = "*"
 copier = "*"
 pipx = "*"
+flask-bootstrap = "*"
 
 [dev-packages]
 

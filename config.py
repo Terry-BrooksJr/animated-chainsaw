@@ -17,7 +17,7 @@ load_dotenv(path.join(basedir, '.env'))
 class Config():
     """Base config."""
     SECRET_KEY = 'JHLIUGYUGIOUGOIUYGOUYGIUJGHOPIUGIUYUYGOYT7676'
-    SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
+    SESSION_COOKIE_NAME = 'knbhjbguyg7986t87t7g8t7gg8yuuh9i'
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
     SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')

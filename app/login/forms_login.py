@@ -1,6 +1,7 @@
 from wtforms import StringField, SubmitField, DateField, PasswordField,RadioField
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
+from flask import current_app as app
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(message='Please Enter Vaild Username')])
