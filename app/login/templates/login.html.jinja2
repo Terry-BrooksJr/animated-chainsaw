@@ -1,0 +1,38 @@
+{% extend 'layout.html.jinja2' ß%}
+    {% block content %}}
+    <div class="box-form">
+      %%  <div class="left">
+            <div class="overlay">
+                <h1>Safari Life</h1>
+                <h2> Child Care Management System</h2>
+                <span>
+			
+		</span>
+            </div>
+        </div>
+
+        <div class="flask-message-container">
+            {% with shoutouts = get_flashed_messages(with_categories=true) %} {% if shoutouts %}{% for category, shoutout in shoutouts%}
+            <div class="alert alert-{{category}}">
+                {{shoutout}}
+            </div>
+            {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+        </div>
+        <div class="right">
+            <h5>Login</h5>
+            <p>Don't have an account? <br> Reach out to your facility's director</p>
+            <div class="inputs login-form">
+                <form action="/dashboard" method="post">
+                    {{ form.csrf_token }} {{form.username.label}}
+                    <br> {{form.username(size=32)}} {{form.password.label}}
+                    <br> {{form.password(size=32)}} <br> {{form.remember_me.label}} {{form.remember_me}}
+                </form>
+            </div>
+
+                <p>forget password?</p>
+            </div>
+
+            <br>
+        </div>
+    </div>
+{% endblock ------%}

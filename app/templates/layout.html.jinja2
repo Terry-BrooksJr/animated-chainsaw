@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>{{ title|default('Safari Life Child Management System') }}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for( 'static', filename='./images/favicon.svg') }}">
+<link rel="icon" type="image/png" href="{{ url_for( 'static', filename='./images/favicon.png' ) }}">
+    <link href="https://assets.codepen.io/6554302/normalize.css" rel="stylesheet">
+    <!-- Normalization Style Script -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body class="{{ template }}">
+  {% block content %}{% endblock %}
+</body>
+
+</html>
