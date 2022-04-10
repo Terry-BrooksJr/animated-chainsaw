@@ -1,4 +1,4 @@
-{% extends "layout.html.jinja2" %}
+{% extends "layout.html.jinja" %}
     {% block content %}
     <div class="box-form">
       <div class="left">
@@ -21,23 +21,31 @@
             {% endfor %} 
             {% endif %} {% endwith %}
         <div class="right">
-            <div id="title-container">
             <h5 id="login_title">Login</h5>
-            </div>
         
             <div class="inputs login-form">
                 <form action="/authorize_user" method="post">
                     {{ form.csrf_token }} 
-                    {{form.username.label}}
-                     {{form.username(size=32)}} {{form.password.label}}
+<div class="login-form-field">
+ {{form.username(size=32)}}                     
+{{form.username.label}}
+</div>
+<div class="login-form-field">
                      {{form.password(size=32)}} 
+                    {{form.password.label}}
+</div>
+<div class="remember-me--forget-password">
+                    {{form.remember_me.label}}
+{{ form.remember_me()}}
+</div>
+                             
                     {{form.submit(class_="button", id_="submit")}}
                 </form>
             </div>
 
       <div class="forgot-password-copy-contatiner">
             <i class="fa fa-question-circle-o fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Reach out to your daycare director"></i>
-            <p class="forgot-password-copy">Don't have an account or forgot your password? </p>
+            <p id='no-password' class="forgot-password-copy">Don't have an account or forgot your password? </p>
             </div>
             </div>
             <br>

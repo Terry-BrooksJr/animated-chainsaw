@@ -1,0 +1,57 @@
+
+{% extends "dashboard_layout.html.jinja" %}
+<div class="fullscreen dashboard">
+	<div class="container">
+		<div id="title-contatiner">
+			<h1 class="title center">Welcome to the Safari Life Child Management System, {{PlatformUser.first_name}} </h1>
+			<sub id="homepage-last-logged">Last Logged in at{{PlatformUser.last_logged_in}}</sub>
+		</div>
+
+		<div class="tools large-blocks">
+			<h2> What Would You Like To Do?</h2>
+
+			<a ng-href="/#/search">
+				<i class="fa fa-search"></i>
+				<div class="circle"></div>
+				<span>Student Search</span>
+				<p>Locate ac student profile by name, id, or class/teacher</p>
+			</a>
+			<a ui-sref="data-manager">
+				<i class="fa fa-thumbs-o-up"></i>
+				<div class="circle"></div>
+				<span>Approve Time</span>
+				<p>Review recent timecard submissions</p>
+			</a>
+			<a ui-sref="notam-search">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="circle"></div>
+				<span>Run a Report</span>
+				<p>Create and export preconfigured reports.(i.e. Attendance, Billing, etc.)</p>
+			</a>
+			<a ng-href="/#/customer-profile">
+				<i class="fa fa-user"></i>
+				<div class="circle"></div>
+				<span>Enroll Student</span>
+				<p>Create a new Student Profile</p>
+			</a>
+			<a ng-href="/#/airport-surveillance">
+				<i class="fa fa-users"></i>
+				<div class="circle"></div>
+				<span>Create a New Class</span>
+				<p>Create a new class of students.</p>
+			</a>
+			<a class="obstacle" ng-href="/#/obstacle/upload">
+				<i class="fa fa-cogs"></i>
+				<div class="circle"></div>
+				<span>Modify Settings</span>
+				<p>Make changes to the settings of the platform (i.e. Password)</p>
+			</a>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!-- partial -->
+  
+</body>
+</html>

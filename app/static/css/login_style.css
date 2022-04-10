@@ -37,15 +37,22 @@ body {
 }
 
 .box-form div {
-    height: auto;
+    height: AUTO;
 }
 
 .box-form .left {
     color: #FFFFFF;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-image: url("https://assets.codepen.io/6554302/10271148.jpg");
     overflow: hidden;
+}
+
+#login-form-username-field {
+    display: inline-block;
+    width: 66%;
+    height: auto;
+    justify-content: center;
 }
 
 .box-form .left .overlay {
@@ -170,4 +177,10 @@ label span.text-checkbox {
     position: relative;
     cursor: pointer;
     transition: all 0.2s linear;
+}
+
+.forgot-password-copy-contatiner {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: center;
 }

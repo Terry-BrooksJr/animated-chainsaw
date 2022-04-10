@@ -25,3 +25,25 @@ const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
+
+function hider(element_id) {
+  document.getElementById(element_id).setAttribute("hidden", "");
+}
+function shower(element_id) {
+  document.getElementById(element_id).removeAttribute("hidden", "");
+}
+
+function hooverStart() {
+  const element = document.getElementById('No-Password');
+  element.addEventListener('onmouseover',hider(element));
+}
+function hooverEnd(){
+  const element = document.getElementById('No-Password');
+  element.addEventListener('onmouseleave', hider(element));
+
+}
+
+function getDate(){
+  let currentYear = new Date().getFullYear(); 
+  return currentYear
+}

@@ -19,7 +19,7 @@ login_bp = Blueprint(
 def login():
     form = LoginForm(csrf_enabled=False)
     return render_template(
-        'login.html.jinja2',
+        'login.html.jinja',
         title='Safari Life Child Management System - Login',
         template='login',
         form=form)
