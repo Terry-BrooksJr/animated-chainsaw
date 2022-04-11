@@ -1,8 +1,9 @@
-from flask import Flask
+from flask import Flask, request, redirect, url_for 
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
 from config import Config
+from urlparse import urlparse, urljoin
 
 
 # Globally accessible libraries
@@ -36,3 +37,27 @@ def init_app():
         app.register_blueprint(routes_enrollment.enrollment_bp)
 
         return app
+    
+# * Next 3 Function collectively will  confirm url after login flow is safe for redirects. Written in the app factory because these 3 functions will be used in each blue print routes 
+
+# * Function  1: that ensures that a redirect target will lead to the same server
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, target))
+    return test_url.scheme in ('http', 'https') and \
+        ref_url.netloc == test_url.netloc
+
+# * Function 2: that looks at various hints to find the redirect target uses function 1 as a helper
+def get_redirect_target():
+    for target in request.values.get('next'), request.referrer:
+        if not target:
+            continue
+        if is_safe_url(target):
+            return target
+
+# * Function 3: Ensures we do not redirect the initial POST request created at form submission by redirecting with a  slightly different argument (only use the submitted data, not the referrer
+def redirect_back(endpoint, **values):
+    target = request.form['next']
+    if not target or not is_safe_url(target):
+        target = url_for(endpoint, **values)
+    return redirect(target)

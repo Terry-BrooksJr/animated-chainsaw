@@ -21,8 +21,11 @@
 
     {% if template == 'login'%}
     <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='./css/login_style.css' ) }}"> 
-    {% elif template == 'homepage' %}
+    {% elif template == 'base' %}
     <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/app/static/css/landing_page_style.css') }}"> 
+    {% elif template == '404' %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/app/static/css/404_.css') }}"> 
+
     {% endif %}
 
 </head>

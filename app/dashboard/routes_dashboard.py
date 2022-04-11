@@ -15,5 +15,5 @@ dashboard_bp = Blueprint(
 def dashboard():
     return render_template('homepage.jinja',
                            title='Safari Life Child Management System - Login',
-                           template='Base',
+                           template='base',
                            location = "homepage")
