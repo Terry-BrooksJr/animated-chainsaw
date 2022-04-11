@@ -20,7 +20,7 @@
             </div>
             {% endfor %} 
             {% endif %} {% endwith %}
-        <div class="right">
+        <div id="entire-login" class="right">
             <h5 id="login_title">Login</h5>
         
             <div class="inputs login-form">
@@ -40,9 +40,10 @@
 </div>
                              
                     {{form.submit(class_="button", id_="submit")}}
+                        <input type=hidden value="{{ next or '' }}" name=next>
+
                 </form>
             </div>
-
       <div class="forgot-password-copy-contatiner">
             <i class="fa fa-question-circle-o fa-3x" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Reach out to your daycare director"></i>
             <p id='no-password' class="forgot-password-copy">Don't have an account or forgot your password? </p>
