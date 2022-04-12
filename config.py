@@ -16,8 +16,8 @@ load_dotenv(path.join(basedir, '.env'))
 
 class Config():
     """Base config."""
-    SECRET_KEY = 'JHLIUGYUGIOUGOIUYGOUYGIUJGHOPIUGIUYUYGOYT7676'
-    SESSION_COOKIE_NAME = 'knbhjbguyg7986t87t7g8t7gg8yuuh9i'
+    SECRET_KEY = environ.get('SECRET_KEY')
+    SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
     STATIC_FOLDER = 'static'
     TEMPLATES_FOLDER = 'templates'
     SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
@@ -25,5 +25,8 @@ class Config():
     FLASK_ENV = 'development'
     DEBUG = True
     TESTING = True
-    DATABASE_URI = environ.get('DEV_DATABASE_URI')
+    DATABASE_URI = environ.get('AWS_HOST')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    host = environ.get('AWS_HOST')
+    user = environ.get('AWS_USER')
+    

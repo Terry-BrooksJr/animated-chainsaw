@@ -1,22 +1,25 @@
 from re import template
 from app.models import PlatformUser
-from flask import flash, redirect, render_template, request, url_for, Blueprint, current_app as app, session, g, get, fetch_on
+from flask import flash, redirect, render_template, request, url_for, Blueprint, current_app as app,g, session 
 from flask_login import UserMixin, current_user,login_user, LoginManager
 from .forms_login import LoginForm
 from flask_wtf.csrf import CSRFError
+from flask_session import *
 from app import redirect_back, is_safe_url, get_redirect_target
 
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-# Blueprint Configuration
+
 login_bp = Blueprint(
     'login_bp', __name__,
     template_folder='templates',
     static_folder='static'
 )
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
-# * Need the user_loader for flask-login
+#* Blueprint Configuration
+# * Need the these for for flask-login
 @login_manager.user_loader
 def load_user(user_id):
     return PlatformUser.query.get(int(user_id))
@@ -61,10 +64,24 @@ def verify_user():
         # user = PlatformUser.query.filter_by(username=form.username.data).first() #TODO:Uncomment out lines 44 & 45 when Database is set 
         # if user and PlatformUser.check_password(form.password.data):
         else:
+<<<<<<< HEAD
+=======
+            return redirect(url_for('login', _external=True, _scheme='https'))
+>>>>>>> circleci-project-setup
             flash(f'The username {test_user} and the provided password combination is not in our system.\n Please check the credentials provided and reattempt your login', 'danger' )            
             return redirect(url_for('login_bp.login', _external=True, _scheme='https'))
 
 
+<<<<<<< HEAD
+=======
+@login_bp.route('/logout')
+def logout():
+    session.clear()
+    flash('You have successfully logged out! See Ya Later')
+    return redirect(url_for('login'))
+
+
+>>>>>>> circleci-project-setup
 @app.errorhandler(CSRFError)
 def handle_csrf_error(e):
     return render_template('csrf_error.html', reason=e.description, title='Security Error', template='base'), 400
