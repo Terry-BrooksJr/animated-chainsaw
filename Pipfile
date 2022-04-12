@@ -18,6 +18,8 @@ jinja2 = "*"
 flask-security = "*"
 copier = "*"
 pipx = "*"
+flask-session = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
