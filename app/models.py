@@ -1,4 +1,4 @@
-from wtforms import StringField, SubmitField, PasswordField, RadioFie
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
@@ -25,7 +25,11 @@ class PlatformUser(UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
     def is_active(self):
-        return self.is_active()
+        return super().is_active()
+    def is_authenticated(self):
+        return super().is_authenticated
+    def is_anonymous(self):
+        return super().is_anonymous
 
 class PlatformUser:
     def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, is_active, last_logged_in):
