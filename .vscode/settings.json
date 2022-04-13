@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "ls-1f93c81433121e3e0e6e4d94c74e5c45e2223926.c5brfcn0ty5g.us-east-2.rds.amazonaws.com",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "AWS",
+            "database": "postgres",
+            "username": "terrybrooksjr"
+        }
+    ]
+}

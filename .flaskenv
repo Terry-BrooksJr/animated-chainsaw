@@ -1,3 +1,4 @@
 FLASK_APP=wsgi
 FLASK_ENV=development
 FLASK_RUN_PORT=6969
+SECRET_KEY='#/H5KVSMf{Z?dB^'
