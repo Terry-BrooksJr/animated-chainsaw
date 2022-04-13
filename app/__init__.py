@@ -1,7 +1,8 @@
-from flask import Flask, request, redirect, url_for 
+from flask import Flask, request, redirect, url_for, g, current_app git conflicts
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
+from redis import redis_uri
 from config import Config
 from urlparse import urlparse, urljoin
 
@@ -61,3 +62,14 @@ def redirect_back(endpoint, **values):
     if not target or not is_safe_url(target):
         target = url_for(endpoint, **values)
     return redirect(target)
+
+
+def get_db():
+    if 'db' not in g:
+        g.db = sqlite3.connect(
+            current_app.config['DATABASE'],
+            detect_types=sqlite3.PARSE_DECLTYPES
+        )
+        g.db.row_factory = sqlite3.Row
+
+    return g.db
