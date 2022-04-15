@@ -1,45 +1,28 @@
-import os
-import psycopg2
-from config import Config 
-from dotenv import environ 
 
-# conn = psycopg2.connect(
-    host="localhost",
-    database="flask_db",
-    host=environ.get('AWS_HOST')
-    user=environ.get('AWS_USER')
+from psycopg2 import cursor, connection, comm
+from config import Config 
+from os import environ
+
+host = environ.get('AWS_db_HOST')
+database="postgres",
+user=environ.get('AWS_db_USER')
+password=environ.get('AWS_db_PASSWORD')
 
 # Open a cursor to perform database operations
-cur = conn.cursor()
+cur = connection.cursor()
 
-# Execute a command: this creates a new table
-cur.execute('DROP TABLE IF EXISTS books;')
-cur.execute('CREATE TABLE books (id serial PRIMARY KEY,'
-            'title varchar (150) NOT NULL,'
-            'author varchar (50) NOT NULL,'
-            'pages_num integer NOT NULL,'
-            'review text,'
-            'date_added date DEFAULT CURRENT_TIMESTAMP);'
-            )
 
 # Insert data into the table
 
-cur.execute('INSERT INTO books (title, author, pages_num, review)'
-            'VALUES (%s, %s, %s, %s)',
-            ('A Tale of Two Cities',
-             'Charles Dickens',
-             489,
-             'A great classic!')
-            )
+cur.execute('INSERT INTO "PlatformUsers"(user_id, username, user_first_name, user_last_name, password_hash, daycare_facility, created_at, last_modified_at, is_archived, role, last_login)'
+    'VALUES(
 
 
-cur.execute('INSERT INTO books (title, author, pages_num, review)'
-            'VALUES (%s, %s, %s, %s)',
-            ('Anna Karenina',
-             'Leo Tolstoy',
-             864,
-             'Another great classic!')
-            )
+cur.execute("INSERT INTO books (title, author, pages_num, review)"
+            "VALUES (
+                {},{},{},{},{},{},{},{},{},{},{}.format('(nextval(user_id)','bcasterton0@state.gov','Barth','Casterton','vIE1lb9v','37B4','','','false','user','2/16/2022')", 
+                {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}.format('(nextval(user_id)', , 'srenault1@chronoengine.com', 'Sampson', 'Renault', 'vo67AE', '30S6', '', '2021-05-23 10:41:30', 'true', 'user', '9/14/2021'),
+
 
 conn.commit()
 
