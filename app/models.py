@@ -31,10 +31,10 @@ class PlatformUser(UserMixin):
         return super().is_authenticated
     def is_anonymous(self):
         return super().is_anonymous
-    def validate_unique_username(self.username):
+    def validate_unique_username(self,username):
         username = PlatformUser.object(username=username.data).first()
         if username:
-            raise ValidationError(f'{username) is unavailable. Please select a new username.');
+            raise ValidationError("{} is unavailable. Please select a new username.format(request.form['username'])");
 
 class PlatformUser:
     def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, is_active, last_logged_in):

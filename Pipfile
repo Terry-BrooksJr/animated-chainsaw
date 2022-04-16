@@ -30,6 +30,8 @@ WTForms = "==3.0.1"
 markupsafe = "==2.0.1"
 postgres = "*"
 psycopg2 = "*"
+flask-redis = "*"
+django = "*"
 
 [dev-packages]
 

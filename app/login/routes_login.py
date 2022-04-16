@@ -4,7 +4,6 @@ from flask import flash, redirect, render_template, request, url_for, Blueprint,
 from flask_login import UserMixin, current_user,login_user, LoginManager
 from .forms_login import LoginForm
 from flask_wtf.csrf import CSRFError
-from flask_session import *
 from app import redirect_back, is_safe_url, get_redirect_target
 
 
