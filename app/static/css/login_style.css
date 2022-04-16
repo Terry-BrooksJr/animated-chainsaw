@@ -1,6 +1,11 @@
 @charset "UTF-8";
+@font-face {
+    font-family: SafariLifeWild;
+    src:"{{ url_for( 'static', filename='/fonts/Rubik_Moonrocks/RubikMoonrocks-Regular.ttf')}}"
+}
+
 body {
-    background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+    background-image: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -8,9 +13,14 @@ body {
     color: #333333;
 }
 
+#login-title {
+    font-family: "SafariLifeWild";
+}
+
 .box-form {
-    margin: 0 auto;
     width: 80%;
+    margin-top: 15%;
+    margin-left: 10%;
     background: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
@@ -21,12 +31,6 @@ body {
     box-shadow: 0 0 20px 6px #090b6f85;
 }
 
-.box-form {}
-
-.box-form {}
-
-.box-form {}
-
 @media (max-width: 980px) {
     .box-form {
         flex-flow: wrap;
@@ -36,9 +40,10 @@ body {
     }
 }
 
-.box-form div {
+
+/* .box-form div {
     height: AUTO;
-}
+} */
 
 .box-form .left {
     color: #FFFFFF;
@@ -46,10 +51,12 @@ body {
     background-repeat: no-repeat;
     background-image: url("https://assets.codepen.io/6554302/10271148.jpg");
     overflow: hidden;
+    height: auto2;
 }
 
 #login-form-username-field {
     display: inline-block;
+    margin: 5px;
     width: 66%;
     height: auto;
     justify-content: center;
@@ -127,6 +134,10 @@ body {
     border-bottom: 2px solid #B0B3B9;
 }
 
+#login-title {
+    font-family: "SafariLifeWild";
+}
+
 .box-form .right .remember-me--forget-password {
     display: flex;
     justify-content: space-between;
@@ -148,8 +159,8 @@ body {
     display: inline-block;
     border: 0;
     outline: 0;
-    box-shadow: 0px 4px 20px 0px #49c628a6;
-    background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+    box-shadow: 0px 4px 20px 0px #824026;
+    background-image: linear-gradient(135deg, #F3A800 10%, #F8F17F 100%);
 }
 
 #submit {
