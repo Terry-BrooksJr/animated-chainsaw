@@ -3,7 +3,7 @@
     <div class="box-form">
       <div class="left">
             <div class="overlay">
-                <h1 id="Login-Title">Safari Life</h1>
+                <h1 id="Login-T">Safari Life</h1>
                 <h2> Child Care Management System</h2>
                 <span>
 			
@@ -34,13 +34,13 @@
                      {{form.password(size=32)}} 
                     {{form.password.label}}
 </div>
-<div class="remember-me--forget-password">
+<diV class="remember-me--forget-password">
                     {{form.remember_me.label}}
 {{ form.remember_me()}}
-</div>
-                             
+</diV>
+                      {{ form.recaptcha() }}
                     {{form.submit(class_="button", id_="submit")}}
-                        <input type=hidden value="{{ next or '' }}" name=next>
+                        <input type=hidden value="{{'url_for(dashboard_bp.dashboard' }}" name=next>
 
                 </form>
             </div>

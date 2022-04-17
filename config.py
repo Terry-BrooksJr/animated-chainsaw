@@ -6,7 +6,7 @@ export PROD_DATABASE_URI
 export DEV_DATABASE_URI
 export SQLALCHEMY_DATABASE_URI
 """
-from os import environ, path
+from os import environ, path, getenv
 from dotenv import load_dotenv
 from flask_login import LoginManager
 
@@ -19,7 +19,6 @@ class Config():
     SECRET_KEY = environ.get('SECRET_KEY')
     SESSION_COOKIE_NAME = environ.get('SESSION_COOKIE_NAME')
     STATIC_FOLDER = 'static'
-    TEMPLATES_FOLDER = 'templates'
     SQLALCHEMY_DATABASE_URI = environ.get('SQLALCHEMY_DATABASE_URI')
     FLASK_APP = 'wsgi.py'
     FLASK_ENV = 'development'
@@ -27,6 +26,10 @@ class Config():
     TESTING = True
     DATABASE_URI = environ.get('AWS_HOST')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    host = environ.get('AWS_HOST')
-    user = environ.get('AWS_USER')
-    
+    host = getenv('AWS_HOST')
+    user = getenv('AWS_USER')
+    # RBAC_USE_WHITE = True
+    RECAPTCHA_PRIVATE_KEY = getenv('GOOGLE_RECAPTCHA_PRIVATE_KEY')
+    TESTING = True
+    RECAPTCHA_PUBLIC_KEY=getenv('GOOGLE_RECAPTCHA_SITE_KEY')
+    TESTING = True

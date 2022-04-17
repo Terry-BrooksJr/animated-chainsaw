@@ -1,9 +1,11 @@
-from flask import Flask, request, redirect, url_for 
+from flask import Flask, request, redirect, url_for, current_app as app 
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
 from config import Config
 from urllib.parse import urlparse,urljoin
+from flask_rbac import RBAC
+
 
 
 
@@ -11,7 +13,7 @@ from urllib.parse import urlparse,urljoin
 db = SQLAlchemy()
 r = FlaskRedis()
 login_manager = LoginManager()
-
+rbac = RBAC()
 
 def init_app():
     """Initialize the core application."""
@@ -22,6 +24,8 @@ def init_app():
     db.init_app(app)
     r.init_app(app)
     login_manager.init_app(app)
+    rbac.init_app(app)
+
 
 
     with app.app_context():
