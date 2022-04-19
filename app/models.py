@@ -3,12 +3,12 @@ from wtforms import StringField, SubmitField, PasswordField, BooleanField,Flags
 from flask_wtf import FlaskForm
 from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
-import bcrypt
+from argon2 import PasswordHasher
 from flask_login import UserMixin
 from flask_rbac import RoleMixin
 
 class PlatformUser(UserMixin):
-    def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, is_active, last_logged_in):
+    def __init__(self, username, user_id, user_first_name, user_last_name, role, password, care_facility, date_account_created, last_date_modified, last_logged_in):
         self.username = username
         self.user_id = user_id
         self.user_first_name = user_first_name
@@ -17,21 +17,22 @@ class PlatformUser(UserMixin):
         self.care_facility = care_facility
         self.date_account_created = date_account_created
         self.last_date_modified = last_date_modified
-        self.is_active = is_active
         self.role = role
         self.last_logged_in = last_logged_in
         
         if (username, user_id, user_first_name, user_last_name, password, care_facility, date_account_created, role) == None or '':
-            raise In
+            raise TypeError
         if not isinstance(user_first_name or user_last_name or role or username, str):
             raise ValueError("Invaild Data Type - User's Name, Role, and username must be a string")
         if not isinstance(user_id, int) and (len(username) > 8):
             raise ValueError("Invalid User ID. User ID must be all intergers not exceeding 8 characters")
     def __repr__(self):
         return '<User {}>'.format(self.username)
-    def set_password(self, password):
-        self.password_hash = bcrypt.hashpw(password, bcrypt.gensalt())
+        def set_password(self, password):
+            password_hash = PasswordHasher().hash(password)
+            return password_hash
     def check_password(self, password):
+        
         return bcrypt.checkpw(password, password_hash)
         return check_password_hash(self.password_hash, password)
     def is_active(self):

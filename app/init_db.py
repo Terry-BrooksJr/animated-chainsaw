@@ -1,20 +1,36 @@
 
-from psycopg2 import cursor, connection, comm
+from psycopg2 import cursor, connection,
+import psycopg2
 from config import Config 
-from os import environ
+from decouple import config
 
-host = environ.get('AWS_db_HOST')
-database="postgres",
-user=environ.get('AWS_db_USER')
-password=environ.get('AWS_db_PASSWORD')
-
-# Open a cursor to perform database operations
-cur = connection.cursor()
-
-
+try:
+    dev_postgres_db = psycopg2.connect( 
+                                        host = config('AWS_db_HOST'),
+                                        database="postgres",
+                                        user=config('AWS_db_USER'),
+                                  xw      password=config('AWS_db_PASSWORD')
+                                        )
+# Open a cursor to perform database operat\ions
+cursor = connection.cursor()
+# Print PostgreSQL details
+print("PostgreSQL server information")
+print(connection.get_dsn_parameters(), "\n")
+# Executing a SQL query
+cursor.execute("SELECT version();")
+# Fetch result
+record = cursor.fetchone()
+print("You are connected to - ", record, "\n")
+except (Exception, Error) as error:
+    print("Error while connecting to PostgreSQL", error)
+finally:
+    if (connection):
+        cursor.close()
+        connection.close()
+        print("PostgreSQL connection is closed")
 # Insert data into the table
 
-cur.execute('INSERT INTO "PlatformUsers"(user_id, username, user_first_name, user_last_name, password_hash, daycare_facility, created_at, last_modified_at, is_archived, role, last_login)'
+cursor.execute('INSERT INTO "PlatformUsers"(user_id, username, user_first_name, user_last_name, password_hash, daycare_facility, created_at, last_modified_at, is_archived, role, last_login)'
     'VALUES(
 
 
