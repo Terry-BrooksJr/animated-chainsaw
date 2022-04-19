@@ -78,7 +78,7 @@ body {
     font-family: "DM Sans", sans-serif;
     overflow: hidden;
     justify-content: center;
-    background-color: var(--app-container);
+    /* background-color: var(--app-container); */
 }
 
 #copyright-block {

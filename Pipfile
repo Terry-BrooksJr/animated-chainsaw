@@ -36,6 +36,8 @@ bcrypt = "*"
 pipenv-to-requirements = "*"
 flask-rbac = "*"
 wtforms-alchemy = "*"
+python-decouple = "*"
+argon2-cffi = "*"
 
 [dev-packages]
 

@@ -47,3 +47,7 @@ function getDate(){
   let currentYear = new Date().getFullYear(); 
   return currentYear
 }
+
+  function ReCapatchaonSubmit(token) {
+    document.getElementById("demo-form").submit();
+   }

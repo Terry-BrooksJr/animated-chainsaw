@@ -5,6 +5,7 @@ import string
 import random
 from flask_sqlalchemy import SQLAlchemy
 import sqlalchemy
+import os
 
 # from wtforms.ext.sqlalchemy.orm import model_form
 
@@ -33,29 +34,8 @@ class CreatePlatformUser(FlaskForm):
              
     
     def create_temp_password(self):
-        """
-        It creates a random password of length 12, with at least one uppercase letter, one lowercase letter,
-        one digit, and one special character
-        :return: A string of 12 characters, with at least one uppercase letter, one lowercase letter, one
-        digit, and one special character.
-        """
-        alphabets = list(string.ascii_letters)
-        digits = list(string.di2gits)
-        special_characters = list("!@*()")
-        characters = list(string.ascii_letters + string.digits + "!@#*()")
-        password = []
-        for i in range(random.randint(0, 10)):
-            password.append(random.choice(alphabets))
-        for i in range(digitrandom.randint(0, 4)):
-            password.append(random.choice(digits))
-        for i in range(random.randint(0, 2)):
-            password.append(random.choice(special_characters))
-        if len(password) < 12:
-            random.shuffle(characters)
-            for i in range(12 - len(password)):
-                password.append(random.choice(characters))
-        elif len(password) > 12:
-            password = password[0:13]
-            random.shuffle(password)
-        return("".join(password))
+        length = 13
+        chars = string.ascii_letters + string.digits + '!@#$%^&*()';
+        random.seed = (os.urandom(1024));
+        print ''.join(random.choice(chars) for i in range(length));
     

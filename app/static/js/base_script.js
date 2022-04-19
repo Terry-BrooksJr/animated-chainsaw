@@ -25,6 +25,8 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 
+
+
   // var listView = document.querySelector('.list-view');
   // var gridView = document.querySelector('.grid-view');
   // var projectsList = document.querySelector('.project-boxes');
